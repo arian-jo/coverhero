@@ -85,20 +85,22 @@
       <h2 class="text-3xl font-bold text-center mb-8">Get your first cover!</h2>
       <div class="max-w-lg mx-auto form-container bg-white p-8 rounded-lg shadow-lg">
         <!-- Aquí se implementa FormSubmit -->
-        <form action="https://formsubmit.co/coverhero.ia@gmail.com" method="POST" class="space-y-6">
-          <!-- (Opcional) Campo para definir el asunto del correo -->
-          <input type="hidden" name="_subject" value="Nuevo formulario de Cover Hero">
-          <!-- (Opcional) Campo para redirigir a una página de agradecimiento después del envío -->
-          <input type="hidden" name="_next" value="https://tu-sitio.com/thank-you.html">
-          <!-- (Opcional) Puedes deshabilitar el captcha si lo deseas -->
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="name" required>
-          <input type="email" name="email" required>
-          
-          <button type="submit" class="w-full bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 rounded-full shadow-lg transition">
-            Submit
-          </button>
-        </form>
+        <form target="_blank" action="https://formsubmit.co/coverhero.ia@gmail.com" method="POST">
+    <div class="form-group">
+      <div class="form-row">
+        <div class="col">
+          <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+        </div>
+        <div class="col">
+          <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
+  </form>
       </div>
     </div>
   </section>
