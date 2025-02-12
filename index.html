@@ -259,7 +259,7 @@
 
     // Simple email validation function using a regex pattern
     function validateEmail(email) {
-      const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(String(email).toLowerCase());
     }
 
