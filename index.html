@@ -8,13 +8,13 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
 
   <!-- PayPal SDK (replace YOUR_CLIENT_ID with your actual PayPal client ID) -->
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AWYapal4yaCKCsd0v_7qC5mOVdlbPjLdqLojGJ9SDCNnHVbSmvrS65qjW2Zlqw44ZQcv_13b3-7DAPUQ&currency=USD"></script>
   
   <!-- EmailJS SDK (replace YOUR_USER_ID with your actual EmailJS user ID) -->
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script type="text/javascript">
     (function(){
-      emailjs.init("service_3tpnhze"); // Replace with your EmailJS user ID
+      emailjs.init("TonIA"); // Replace with your EmailJS user ID
     })();
   </script>
   
@@ -318,7 +318,7 @@
 
       // Send the form data using EmailJS.
       // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID with your EmailJS details.
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+      emailjs.send("service_3tpnhze", "template_386zywi", {
         cover_description: description,
         user_email: email
       })
