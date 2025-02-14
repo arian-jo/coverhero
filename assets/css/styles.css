@@ -13,25 +13,13 @@ header {
 
 /* Estilos personalizados para el contenedor del formulario */
 .form-container {
-  /* Puedes agregar estilos personalizados adicionales si lo requieres */
+  /* Ajustes opcionales para tu formulario */
 }
 
-/* Ejemplo opcional: personalización de botones (puedes ajustar o eliminar) */
+/* Ejemplo opcional: personalización de botones */
 button {
   transition: background-color 0.3s ease-in-out;
 }
 
-/* Estilos para el carrusel de Swiper */
-/* El contenedor ocupa toda la pantalla y se coloca detrás del contenido */
-.swiper-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10; /* Asegúrate de que el contenido tenga un z-index mayor */
-}
-.swiper-slide {
-  background-size: cover;
-  background-position: center;
-}
+/* El Hero con mosaico en movimiento ya se define en el <style> del HTML,
+   pero podrías mover esas reglas aquí si lo prefieres. */
