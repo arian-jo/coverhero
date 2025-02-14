@@ -1,8 +1,7 @@
 // script.js
 
-// Ejecutar cuando el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function() {
-  // Funcionalidad: Ocultar la navbar al hacer scroll hacia abajo y mostrarla al subir
+  // Navbar: ocultar al hacer scroll hacia abajo y mostrar al subir
   let prevScrollPos = window.pageYOffset;
   const header = document.querySelector('header');
 
@@ -12,22 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
       // Al subir, se muestra la navbar
       header.style.top = "0";
     } else {
-      // Al bajar, se oculta la navbar (ajusta el valor si la altura cambia)
+      // Al bajar, se oculta la navbar
       header.style.top = "-80px";
     }
     prevScrollPos = currentScrollPos;
   });
 
-  // Inicializar el carrusel de Swiper
-  const swiper = new Swiper('.swiper-container', {
-    loop: true,
-    autoplay: {
-      delay: 5000, // 5 segundos entre slides
-      disableOnInteraction: false,
-    },
-    effect: 'fade', // Efecto de desvanecimiento
-    fadeEffect: {
-      crossFade: true
-    },
-  });
+  // Aquí NO usamos Swiper, porque el efecto es un mosaico animado con CSS
+  // No es necesaria ninguna inicialización adicional para el mosaico.
 });
