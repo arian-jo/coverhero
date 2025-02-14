@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS vía CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Tu archivo de estilos -->
+  <!-- Tu archivo de estilos (opcional) -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="bg-white text-gray-800">
@@ -107,22 +107,44 @@
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold text-center mb-8">Get your first cover!</h2>
       <div class="max-w-lg mx-auto form-container bg-white p-8 rounded-lg shadow-lg">
-        <!-- Formulario que se enviará a Netlify -->
-        <form id="cover-form" name="cover-hero" method="POST" data-netlify="true" autocomplete="off" class="space-y-6">
+        <!-- Formulario sin method="POST" ni data-netlify="true" para evitar envíos directos -->
+        <form id="cover-form" class="space-y-6">
+          <!-- 'form-name' y '_subject' para Netlify -->
+          <input type="hidden" name="form-name" value="cover-hero">
           <input type="hidden" name="_subject" value="Nuevo formulario de Cover Hero">
+          
           <div>
             <label for="description" class="block text-lg font-medium text-gray-700 mb-2">Describe your perfect book cover</label>
-            <textarea id="description" name="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="Enter your cover description..." required></textarea>
+            <textarea 
+              id="description" 
+              name="message" 
+              rows="4" 
+              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" 
+              placeholder="Enter your cover description..." 
+              required
+            ></textarea>
           </div>
+
           <div>
             <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email</label>
-            <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="you@example.com" required>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" 
+              placeholder="you@example.com" 
+              required
+            >
           </div>
-          <!-- Sin botón de submit tradicional, el botón de PayPal hace todo -->
         </form>
 
         <!-- Contenedor donde se renderiza el botón de PayPal -->
         <div id="paypal-button-container" class="mt-6"></div>
+
+        <!-- Mensaje de estado (oculto inicialmente) -->
+        <div id="status-message" class="mt-4 text-center hidden">
+          <p class="text-purple-800">Processing your order...</p>
+        </div>
       </div>
     </div>
   </section>
@@ -154,24 +176,23 @@
   <script src="https://www.paypal.com/sdk/js?client-id=EI_NOtzrSodS6UCAZ5h9kIJO2DFaa4k5B1xasQzDKisle-TsFJtLpB18RAHX0deKaN3ezVVci9OBLZDl&currency=USD"></script>
   <script>
     paypal.Buttons({
-      // Personalizar estilo (opcional)
       style: {
-        label:  'checkout', // 'paypal', 'checkout', 'pay', 'buynow'
-        color:  'gold',     // 'gold', 'blue', 'silver', 'white', 'black'
-        shape:  'rect',     // 'pill' o 'rect'
+        label: 'checkout',
+        color: 'gold',
+        shape: 'rect',
         layout: 'horizontal'
       },
-      // onClick se dispara justo cuando se hace clic en el botón de PayPal
+
       onClick: function(data, actions) {
         const form = document.getElementById('cover-form');
         // Validar el formulario antes de abrir PayPal
         if (!form.checkValidity()) {
           form.reportValidity();
-          return actions.reject(); // Cancela el flujo de PayPal
+          return actions.reject();
         }
-        return actions.resolve();   // Continúa con el flujo de pago
+        return actions.resolve();
       },
-      // Crear la orden de pago
+
       createOrder: function(data, actions) {
         return actions.order.create({
           purchase_units: [{
@@ -181,22 +202,46 @@
           }]
         });
       },
-      // Capturar el pago al aprobar
+
       onApprove: function(data, actions) {
+        // Mostrar mensaje de "Processing..."
+        document.getElementById('status-message').classList.remove('hidden');
+
         return actions.order.capture().then(function(details) {
-          alert('Transacción completada por ' + details.payer.name.given_name);
-          // Enviar el formulario a Netlify
-          document.getElementById('cover-form').submit();
+          // Recoger datos del formulario
+          const formData = new FormData(document.getElementById('cover-form'));
+          
+          // Enviar a Netlify mediante fetch
+          fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+          })
+          .then(response => {
+            if (response.ok) {
+              alert('¡Gracias! Tu pedido ha sido procesado correctamente.');
+              document.getElementById('cover-form').reset();
+            } else {
+              throw new Error('Error al enviar el formulario');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un error al procesar tu pedido. Por favor, contáctanos.');
+          })
+          .finally(() => {
+            document.getElementById('status-message').classList.add('hidden');
+          });
         });
       },
-      // Manejo de errores
+
       onError: function(err) {
         console.error('Error en la transacción:', err);
         alert('Hubo un error con el pago. Por favor, inténtalo de nuevo.');
       }
     }).render('#paypal-button-container');
   </script>
-
+  
   <!-- Tu script.js (si incluye la lógica de navbar al hacer scroll) -->
   <script src="assets/js/script.js"></script>
 </body>
