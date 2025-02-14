@@ -21,5 +21,4 @@ button {
   transition: background-color 0.3s ease-in-out;
 }
 
-/* El Hero con mosaico en movimiento ya se define en el <style> del HTML,
-   pero podrías mover esas reglas aquí si lo prefieres. */
+/* (El resto de las reglas específicas para el Hero con mosaico están incluidas en el <style> de index.html) */
