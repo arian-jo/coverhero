@@ -4,65 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cover Hero - Create Stunning Book Covers</title>
+
   <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS vía CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <!-- Archivo de estilos externo (opcional) -->
+
+  <!-- Tu archivo de estilos externo -->
   <link rel="stylesheet" href="assets/css/styles.css">
+
   <style>
-    /* Ejemplo: fondo para el Hero con una imagen de portada (ajusta la URL a tu imagen real) */
-    .hero-bg {
-      background: url('TU_IMAGEN_DE_FONDO') no-repeat center center/cover;
+    /* El Hero ocupará toda la pantalla, con fondo gris como fallback */
+    #hero {
+      height: 100vh; /* Hero a pantalla completa */
+      background-color: #e2e8f0; /* bg-gray-200 */
+      overflow: hidden; /* para ocultar scroll interno si lo hay */
+      position: relative; /* para posicionar elementos absolutos dentro */
     }
-    /* Opcional: capa oscura para mejor legibilidad sobre la imagen */
-    .hero-overlay {
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-    /* Swiper container: ocupa toda la pantalla y se muestra detrás del contenido principal */
+
+    /* Swiper container dentro del Hero */
     .swiper-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -10;
+      position: absolute;
+      inset: 0;
+      z-index: 0; /* detrás del contenido principal */
     }
     .swiper-slide {
       background-size: cover;
       background-position: center;
     }
+
+    /* Capa oscura para mayor contraste */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 10;
+    }
+
+    /* Contenido del hero en primer plano */
+    .hero-content {
+      position: relative;
+      z-index: 20; /* encima de la capa oscura */
+      height: 100%; /* para flex vertical */
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
-
-  <!-- Swiper Background Carousel -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image: url('cover1.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover2.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover3.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover4.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover5.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover6.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover7.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover8.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover9.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover10.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover11.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover12.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover13.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover14.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover15.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover16.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover17.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover18.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover19.jpg');"></div>
-      <div class="swiper-slide" style="background-image: url('cover20.jpg');"></div>
-    </div>
-  </div>
 
   <!-- Navbar -->
   <header class="fixed top-0 left-0 w-full h-16 z-50 bg-white shadow-md">
@@ -91,19 +82,51 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="pt-[100px] pb-20 hero-bg relative">
-    <div class="hero-overlay absolute inset-0"></div>
-    <div class="container mx-auto px-6 relative z-10 text-center text-white">
-      <h1 class="text-4xl md:text-6xl font-semibold mb-6">
-        Create Stunning Book Covers in Hours, Not Weeks
-      </h1>
-      <p class="text-lg md:text-2xl mb-8">
-        Get a professional cover concept for just $0.99. Combine the power of AI with expert design to launch your book faster.
-      </p>
-      <a href="#form" class="bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition">
-        Get your first concept by $0.99!
-      </a>
+  <!-- Hero Section con carrusel de fondo -->
+  <section id="hero">
+    <!-- Swiper Container (fondo) -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <!-- Ajusta las rutas de imagen a las reales de tu proyecto -->
+        <div class="swiper-slide" style="background-image: url('cover1.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover2.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover3.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover4.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover5.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover6.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover7.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover8.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover9.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover10.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover11.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover12.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover13.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover14.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover15.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover16.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover17.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover18.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover19.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('cover20.jpg');"></div>
+      </div>
+    </div>
+
+    <!-- Capa oscura para mejor legibilidad -->
+    <div class="hero-overlay"></div>
+
+    <!-- Contenido principal del hero -->
+    <div class="hero-content flex flex-col items-center justify-center text-center text-white">
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl md:text-6xl font-semibold mb-6">
+          Create Stunning Book Covers in Hours, Not Weeks
+        </h1>
+        <p class="text-lg md:text-2xl mb-8 max-w-2xl mx-auto">
+          Get a professional cover concept for just $0.99. Combine the power of AI with expert design to launch your book faster.
+        </p>
+        <a href="#form" class="bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition">
+          Get your first concept by $0.99!
+        </a>
+      </div>
     </div>
   </section>
 
@@ -419,22 +442,32 @@
   
   <!-- SDK de PayPal para Sandbox -->
   <script src="https://www.paypal.com/sdk/js?client-id=EI_NOtzrSodS6UCAZ5h9kIJO2DFaa4k5B1xasQzDKisle-TsFJtLpB18RAHX0deKaN3ezVVci9OBLZDl&currency=USD"></script>
+
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Tu script principal -->
+  <script src="assets/js/script.js"></script>
+
+  <!-- Inicializar Swiper -->
   <script>
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      },
+    document.addEventListener('DOMContentLoaded', function() {
+      // Inicializar Swiper
+      const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+      });
     });
   </script>
-  <!-- Script de PayPal -->
+
+  <!-- Configurar PayPal Buttons -->
   <script>
     paypal.Buttons({
       style: {
@@ -492,7 +525,5 @@
       }
     }).render('#paypal-button-container');
   </script>
-  <!-- Tu script adicional (navbar scroll, etc.) -->
-  <script src="assets/js/script.js"></script>
 </body>
 </html>
