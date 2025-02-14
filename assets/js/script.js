@@ -8,15 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener('scroll', function() {
     let currentScrollPos = window.pageYOffset;
     if (prevScrollPos > currentScrollPos) {
-      // Al subir, se muestra la navbar
       header.style.top = "0";
     } else {
-      // Al bajar, se oculta la navbar
       header.style.top = "-80px";
     }
     prevScrollPos = currentScrollPos;
   });
 
-  // Aquí NO usamos Swiper, porque el efecto es un mosaico animado con CSS
-  // No es necesaria ninguna inicialización adicional para el mosaico.
+  // No se requiere inicialización adicional para el mosaico, ya que se mueve con CSS.
 });
