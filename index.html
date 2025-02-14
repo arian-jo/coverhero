@@ -10,6 +10,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Vincular el archivo de estilos CSS externo -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Ocultar el contenedor del botón de PayPal */
+    #paypal-button-container {
+      display: none;
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800">
   <!-- Encabezado / Navbar -->
@@ -73,7 +79,6 @@
             <h3 class="text-xl font-semibold text-center">Boy Erased</h3>
           </div>
         </div>
-
         <!-- Portada 2 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
@@ -87,7 +92,6 @@
             <h3 class="text-xl font-semibold text-center">Park Life</h3>
           </div>
         </div>
-
         <!-- Portada 3 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
@@ -110,10 +114,10 @@
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold text-center mb-8">Get your first cover!</h2>
       <div class="max-w-lg mx-auto form-container bg-white p-8 rounded-lg shadow-lg">
-        <!-- Botón de PayPal -->
+        <!-- Contenedor del botón de PayPal (oculto) -->
         <div id="paypal-button-container" class="mb-6"></div>
-        <!-- Formulario que se activa luego del pago -->
-        <form autocomplete="off" class="space-y-6" netlify>
+        <!-- Formulario con id para poder referenciarlo -->
+        <form id="cover-form" name="cover-hero" method="POST" data-netlify="true" autocomplete="off" class="space-y-6">
           <input type="hidden" name="_subject" value="Nuevo formulario de Cover Hero">
           <div>
             <label for="description" class="block text-lg font-medium text-gray-700 mb-2">Describe your perfect book cover</label>
@@ -123,9 +127,9 @@
             <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email</label>
             <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="you@example.com" required>
           </div>
-          <!-- El botón de envío se inicia deshabilitado y se habilitará tras el pago -->
-          <button type="submit" disabled class="w-full bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 rounded-full shadow-lg transition">
-            Submit
+          <!-- Botón que inicia el flujo de pago y luego envía el formulario -->
+          <button type="submit" class="w-full bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 rounded-full shadow-lg transition">
+            Pay & Submit
           </button>
         </form>
       </div>
@@ -158,6 +162,7 @@
   <!-- Integración del SDK de PayPal para Sandbox -->
   <script src="https://www.paypal.com/sdk/js?client-id=EI_NOtzrSodS6UCAZ5h9kIJO2DFaa4k5B1xasQzDKisle-TsFJtLpB18RAHX0deKaN3ezVVci9OBLZDl&currency=USD"></script>
   <script>
+    // Una vez cargada la página, renderizamos el botón de PayPal en el contenedor oculto.
     window.addEventListener('load', function() {
       if (typeof paypal !== "undefined") {
         paypal.Buttons({
@@ -173,8 +178,8 @@
           onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
               alert('Transacción completada por ' + details.payer.name.given_name);
-              // Habilitar el botón de envío del formulario después del pago exitoso
-              document.querySelector('form button[type="submit"]').disabled = false;
+              // Tras el pago exitoso, se envía el formulario.
+              document.getElementById('cover-form').submit();
             });
           },
           onError: function(err) {
@@ -184,6 +189,18 @@
         }).render('#paypal-button-container');
       } else {
         console.error('El SDK de PayPal no se ha cargado correctamente.');
+      }
+    });
+
+    // Interceptamos el envío del formulario para iniciar el flujo de pago
+    document.getElementById('cover-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevenir el envío inmediato
+      // Simular clic en el botón de PayPal (que se encuentra dentro del contenedor oculto)
+      var paypalButton = document.querySelector('#paypal-button-container button');
+      if (paypalButton) {
+        paypalButton.click();
+      } else {
+        alert('El botón de PayPal no está disponible.');
       }
     });
   </script>
