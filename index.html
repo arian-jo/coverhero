@@ -3,16 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cover Hero - Accelerate Your Creative Process</title>
+  <title>Cover Hero - Create Stunning Book Covers</title>
   <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS vía CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Tu archivo de estilos (opcional) -->
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <!-- Archivo de estilos externo (opcional) -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    /* Ejemplo: fondo para el Hero con una imagen de portada (ajusta la URL a tu imagen real) */
+    .hero-bg {
+      background: url('TU_IMAGEN_DE_FONDO') no-repeat center center/cover;
+    }
+    /* Opcional: capa oscura para mejor legibilidad sobre la imagen */
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    /* Swiper container: ocupa toda la pantalla y se muestra detrás del contenido principal */
+    .swiper-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+    }
+    .swiper-slide {
+      background-size: cover;
+      background-position: center;
+    }
+  </style>
 </head>
 <body class="bg-white text-gray-800">
-  <!-- Encabezado / Navbar -->
+
+  <!-- Swiper Background Carousel -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image: url('cover1.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover2.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover3.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover4.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover5.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover6.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover7.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover8.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover9.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover10.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover11.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover12.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover13.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover14.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover15.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover16.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover17.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover18.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover19.jpg');"></div>
+      <div class="swiper-slide" style="background-image: url('cover20.jpg');"></div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
   <header class="fixed top-0 left-0 w-full h-16 z-50 bg-white shadow-md">
     <div class="container mx-auto flex items-center justify-between py-4 px-6">
       <!-- Logo Container: Escudo y Logo -->
@@ -39,16 +91,125 @@
     </div>
   </header>
 
-  <!-- Sección Hero -->
-  <section id="hero" class="pt-[100px] pb-30 bg-gradient-to-b from-purple-200 to-white">
-    <div class="container mx-auto flex flex-col items-center justify-center text-center px-6">
-      <h1 class="text-4xl md:text-6xl font-semibold mb-8">Accelerate Your Creative Process</h1>
-      <p class="text-lg md:text-2xl mb-12">
-        Why spend weeks designing? With our service, receive an initial cover concept for less than a dollar. Then, refine it with our graphic designers to achieve a high-quality, market-ready design.
+  <!-- Hero Section -->
+  <section id="hero" class="pt-[100px] pb-20 hero-bg relative">
+    <div class="hero-overlay absolute inset-0"></div>
+    <div class="container mx-auto px-6 relative z-10 text-center text-white">
+      <h1 class="text-4xl md:text-6xl font-semibold mb-6">
+        Create Stunning Book Covers in Hours, Not Weeks
+      </h1>
+      <p class="text-lg md:text-2xl mb-8">
+        Get a professional cover concept for just $0.99. Combine the power of AI with expert design to launch your book faster.
       </p>
       <a href="#form" class="bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition">
         Get your first concept by $0.99!
       </a>
+    </div>
+  </section>
+
+  <!-- Why Cover Hero? (Bullets) -->
+  <section id="why-cover-hero" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Why Cover Hero?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Cost-Effective</h3>
+          <p class="text-gray-700">
+            Pay just $0.99 for your first concept and save on expensive design fees.
+          </p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Fast Turnaround</h3>
+          <p class="text-gray-700">
+            Receive an initial design in hours, not weeks.
+          </p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Quality Assurance</h3>
+          <p class="text-gray-700">
+            Our AI + design team refines your cover for a professional finish.
+          </p>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-2">Easy Process</h3>
+          <p class="text-gray-700">
+            Simple form, secure payment, and quick results—no design skills needed.
+          </p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="#form" class="inline-block bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition">
+          Start Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works (Pasos) -->
+  <section id="how-it-works" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div class="p-6 bg-white rounded-lg shadow">
+          <div class="text-4xl font-bold text-purple-800 mb-4">1</div>
+          <h3 class="text-xl font-semibold mb-2">Describe Your Book</h3>
+          <p class="text-gray-700">
+            Fill out our quick form with your title, genre, and style preferences.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow">
+          <div class="text-4xl font-bold text-purple-800 mb-4">2</div>
+          <h3 class="text-xl font-semibold mb-2">Pay $0.99</h3>
+          <p class="text-gray-700">
+            Securely pay via PayPal to start generating your first concept.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow">
+          <div class="text-4xl font-bold text-purple-800 mb-4">3</div>
+          <h3 class="text-xl font-semibold mb-2">Get Your Draft</h3>
+          <p class="text-gray-700">
+            Our AI + design team creates an initial cover. Review and request tweaks.
+          </p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow">
+          <div class="text-4xl font-bold text-purple-800 mb-4">4</div>
+          <h3 class="text-xl font-semibold mb-2">Finalize & Launch</h3>
+          <p class="text-gray-700">
+            Approve the final design and get your book ready for market.
+          </p>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="#form" class="inline-block bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials (Opcional) -->
+  <section id="testimonials" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">What Authors Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <p class="text-gray-700 italic">
+            "Cover Hero transformed my rough idea into a stunning cover. My sales tripled!"
+          </p>
+          <div class="mt-4 text-purple-800 font-semibold">— Jane Smith, Romance Author</div>
+        </div>
+        <div class="bg-gray-50 p-6 rounded-lg shadow">
+          <p class="text-gray-700 italic">
+            "I couldn't believe how fast and affordable it was. Highly recommended!"
+          </p>
+          <div class="mt-4 text-purple-800 font-semibold">— Mark Johnson, Sci-Fi Author</div>
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <a href="#form" class="inline-block bg-purple-800 hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition">
+          I Want My Cover
+        </a>
+      </div>
     </div>
   </section>
 
@@ -59,7 +220,6 @@
         Our <span class="text-purple-800">Portfolio</span>
       </h2>
       <div class="grid grid-cols-3 gap-8">
-        <!-- Portada 1 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
             <img 
@@ -72,7 +232,6 @@
             <h3 class="text-xl font-semibold text-center">Boy Erased</h3>
           </div>
         </div>
-        <!-- Portada 2 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
             <img 
@@ -85,7 +244,6 @@
             <h3 class="text-xl font-semibold text-center">Park Life</h3>
           </div>
         </div>
-        <!-- Portada 3 -->
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
             <img 
@@ -102,46 +260,126 @@
     </div>
   </section>
 
-  <!-- Formulario Simple con PayPal (Avanzado) -->
+  <!-- Formulario con PayPal (Avanzado) -->
   <section id="form" class="py-16 bg-gray-50">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold text-center mb-8">Get your first cover!</h2>
-      <div class="max-w-lg mx-auto form-container bg-white p-8 rounded-lg shadow-lg">
-        <!-- Formulario sin method="POST" ni data-netlify="true" para evitar envíos directos -->
+      <div class="form-container bg-white p-8 rounded-lg shadow-lg w-full md:max-w-3xl mx-auto">
         <form id="cover-form" class="space-y-6">
-          <!-- 'form-name' y '_subject' para Netlify -->
           <input type="hidden" name="form-name" value="cover-hero">
           <input type="hidden" name="_subject" value="Nuevo formulario de Cover Hero">
-          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="title" class="block text-lg font-medium text-gray-700 mb-2">Book Title</label>
+              <input 
+                type="text" 
+                id="title" 
+                name="title"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" 
+                placeholder="Enter your book title"
+                required
+              >
+            </div>
+            <div>
+              <label for="subtitle" class="block text-lg font-medium text-gray-700 mb-2">Subtitle (Optional)</label>
+              <input 
+                type="text" 
+                id="subtitle" 
+                name="subtitle"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" 
+                placeholder="Enter a subtitle if you have one"
+              >
+            </div>
+            <div>
+              <label for="genre" class="block text-lg font-medium text-gray-700 mb-2">Genre</label>
+              <input 
+                type="text" 
+                id="genre" 
+                name="genre"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800"
+                placeholder="e.g. Fantasy, Romance, Mystery"
+                required
+              >
+            </div>
+            <div>
+              <label for="audience" class="block text-lg font-medium text-gray-700 mb-2">Target Audience (Optional)</label>
+              <input 
+                type="text" 
+                id="audience" 
+                name="audience"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800"
+                placeholder="e.g. Young adults, children, etc."
+              >
+            </div>
+            <div>
+              <label for="keywords" class="block text-lg font-medium text-gray-700 mb-2">Keywords / Concepts</label>
+              <input 
+                type="text" 
+                id="keywords" 
+                name="keywords"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800"
+                placeholder="e.g. medieval, epic, romance"
+              >
+            </div>
+            <div>
+              <label for="colors" class="block text-lg font-medium text-gray-700 mb-2">Color Preferences (Optional)</label>
+              <input 
+                type="text" 
+                id="colors" 
+                name="colors"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800"
+                placeholder="e.g. dark, pastel, bright"
+              >
+            </div>
+            <div>
+              <label for="style" class="block text-lg font-medium text-gray-700 mb-2">Style Preferences (Optional)</label>
+              <select 
+                id="style" 
+                name="style"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800"
+              >
+                <option value="">No preference</option>
+                <option value="Minimalist">Minimalist</option>
+                <option value="Photographic">Photographic</option>
+                <option value="Illustrated">Illustrated</option>
+                <option value="Abstract">Abstract</option>
+              </select>
+            </div>
+            <div>
+              <label for="referenceLink" class="block text-lg font-medium text-gray-700 mb-2">Reference Link (Optional)</label>
+              <input 
+                type="url" 
+                id="referenceLink" 
+                name="referenceLink"
+                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800"
+                placeholder="Paste a link to images or references"
+              >
+            </div>
+          </div>
           <div>
             <label for="description" class="block text-lg font-medium text-gray-700 mb-2">Describe your perfect book cover</label>
             <textarea 
               id="description" 
-              name="message" 
+              name="description" 
               rows="4" 
               class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" 
-              placeholder="Enter your cover description..." 
+              placeholder="Describe the atmosphere, main elements, or any special requests..."
               required
             ></textarea>
           </div>
-
           <div>
             <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email</label>
             <input 
               type="email" 
               id="email" 
-              name="email" 
-              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" 
-              placeholder="you@example.com" 
+              name="email"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800"
+              placeholder="you@example.com"
               required
             >
           </div>
         </form>
-
-        <!-- Contenedor donde se renderiza el botón de PayPal -->
         <div id="paypal-button-container" class="mt-6"></div>
-
-        <!-- Mensaje de estado (oculto inicialmente) -->
         <div id="status-message" class="mt-4 text-center hidden">
           <p class="text-purple-800">Processing your order...</p>
         </div>
@@ -153,7 +391,9 @@
   <section id="about" class="py-16">
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-4">About</h2>
-      <p class="text-lg text-gray-700">We help you accelerate your creative process by generating stunning book covers with AI.</p>
+      <p class="text-lg text-gray-700">
+        We help you accelerate your creative process by generating stunning book covers with AI. Our team of experts refines every concept to ensure high quality and professionalism.
+      </p>
     </div>
   </section>
 
@@ -161,7 +401,12 @@
   <section id="contact" class="py-16 bg-gray-50">
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-3xl font-bold mb-4">Contact</h2>
-      <p class="text-lg text-gray-700">For inquiries, please email us at <a href="mailto:info@coverhero.com" class="text-purple-800 font-semibold">info@coverhero.com</a></p>
+      <p class="text-lg text-gray-700">
+        For inquiries, please email us at 
+        <a href="mailto:info@coverhero.com" class="text-purple-800 font-semibold">
+          info@coverhero.com
+        </a>
+      </p>
     </div>
   </section>
 
@@ -172,8 +417,24 @@
     </div>
   </footer>
   
-  <!-- SDK de PayPal (Sandbox) -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AWYapal4yaCKCsd0v_7qC5mOVdlbPjLdqLojGJ9SDCNnHVbSmvrS65qjW2Zlqw44ZQcv_13b3-7DAPUQ&currency=USD"></script>
+  <!-- SDK de PayPal para Sandbox -->
+  <script src="https://www.paypal.com/sdk/js?client-id=EI_NOtzrSodS6UCAZ5h9kIJO2DFaa4k5B1xasQzDKisle-TsFJtLpB18RAHX0deKaN3ezVVci9OBLZDl&currency=USD"></script>
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+    });
+  </script>
+  <!-- Script de PayPal -->
   <script>
     paypal.Buttons({
       style: {
@@ -182,36 +443,27 @@
         shape: 'rect',
         layout: 'horizontal'
       },
-
       onClick: function(data, actions) {
         const form = document.getElementById('cover-form');
-        // Validar el formulario antes de abrir PayPal
         if (!form.checkValidity()) {
           form.reportValidity();
           return actions.reject();
         }
         return actions.resolve();
       },
-
       createOrder: function(data, actions) {
         return actions.order.create({
           purchase_units: [{
             amount: {
-              value: '0.99' // Monto a cobrar
+              value: '0.99'
             }
           }]
         });
       },
-
       onApprove: function(data, actions) {
-        // Mostrar mensaje de "Processing..."
         document.getElementById('status-message').classList.remove('hidden');
-
         return actions.order.capture().then(function(details) {
-          // Recoger datos del formulario
           const formData = new FormData(document.getElementById('cover-form'));
-          
-          // Enviar a Netlify mediante fetch
           fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -234,15 +486,13 @@
           });
         });
       },
-
       onError: function(err) {
         console.error('Error en la transacción:', err);
         alert('Hubo un error con el pago. Por favor, inténtalo de nuevo.');
       }
     }).render('#paypal-button-container');
   </script>
-  
-  <!-- Tu script.js (si incluye la lógica de navbar al hacer scroll) -->
+  <!-- Tu script adicional (navbar scroll, etc.) -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>
