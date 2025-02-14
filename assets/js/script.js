@@ -1,7 +1,8 @@
 // script.js
 
-// Funcionalidad: Ocultar la navbar al hacer scroll hacia abajo y mostrarla al subir
+// Ejecutar cuando el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function() {
+  // Funcionalidad: Ocultar la navbar al hacer scroll hacia abajo y mostrarla al subir
   let prevScrollPos = window.pageYOffset;
   const header = document.querySelector('header');
 
@@ -15,5 +16,18 @@ document.addEventListener("DOMContentLoaded", function() {
       header.style.top = "-80px";
     }
     prevScrollPos = currentScrollPos;
+  });
+
+  // Inicializar el carrusel de Swiper
+  const swiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 5000, // 5 segundos entre slides
+      disableOnInteraction: false,
+    },
+    effect: 'fade', // Efecto de desvanecimiento
+    fadeEffect: {
+      crossFade: true
+    },
   });
 });
