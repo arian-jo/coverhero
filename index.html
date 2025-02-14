@@ -15,78 +15,58 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <style>
-    /* Hero a pantalla completa, con fondo gris de fallback */
+    /* ========== HERO SECTION ========== */
     #hero {
-      height: 100vh;
-      background-color: #e2e8f0; /* bg-gray-200 */
-      overflow: hidden; 
+      height: 100vh; /* Ocupa toda la altura de la ventana */
+      background-color: #e2e8f0; /* Fallback gris (bg-gray-200) */
+      overflow: hidden;
       position: relative;
     }
-
-    /* Contenedor amplio que se desplazará horizontalmente */
+    /* Contenedor del mosaico en movimiento: todas las imágenes en fila */
     .moving-bg {
       position: absolute;
       inset: 0;
-      display: flex;         /* todas las imágenes en fila */
-      animation: drift 60s linear infinite; 
-      /* 60s = duración del ciclo; ajústalo según la velocidad deseada */
+      display: flex;
+      animation: drift 60s linear infinite;
     }
-
-    /* Ajuste de cada imagen en el mosaico */
     .moving-bg img {
-      height: 100%;         /* cada imagen ocupa todo el alto del hero */
-      width: auto;          /* ancho automático */
-      flex-shrink: 0;       /* evita que se encojan */
-      object-fit: cover;    /* cubre todo el espacio vertical */
+      height: 100%;      /* Cada imagen ocupa el alto completo del Hero */
+      width: auto;       /* Ancho automático para mantener proporción */
+      flex-shrink: 0;
+      object-fit: cover;
     }
-
-    /* Keyframes para mover el contenedor de izquierda a derecha (o viceversa) */
+    /* Keyframes para mover el mosaico; ajusta el 100% según el ancho total de tus imágenes */
     @keyframes drift {
       0% {
         transform: translateX(0);
       }
       100% {
-        /* Mueve el contenedor un 50% de su ancho. 
-           Ajusta a -100% si quieres que recorra todo el contenedor */
         transform: translateX(-50%);
       }
     }
-
-    /* Capa oscura para mayor contraste */
+    /* Capa oscura para mejorar la legibilidad del texto */
     .hero-overlay {
       position: absolute;
       inset: 0;
       background-color: rgba(0, 0, 0, 0.4);
       z-index: 10;
     }
-
     /* Contenido del hero en primer plano */
     .hero-content {
       position: relative;
-      z-index: 20; /* encima de la capa oscura */
-      height: 100%; 
+      z-index: 20;
+      height: 100%;
     }
   </style>
 </head>
 <body class="bg-white text-gray-800">
-
   <!-- Navbar -->
   <header class="fixed top-0 left-0 w-full h-16 z-50 bg-white shadow-md">
     <div class="container mx-auto flex items-center justify-between py-4 px-6">
-      <!-- Logo Container: Escudo y Logo -->
       <div class="flex items-center">
-        <img 
-          src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66dc928181bf97e670d394b9_Scuderia%20CoverHero.png" 
-          alt="Escudo Cover Hero" 
-          class="w-8 h-8 mr-2"
-        >
-        <img 
-          src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66dda6cb7fecafcd80f1568f_Logo%20White%20back.png" 
-          alt="Cover Hero" 
-          class="h-8"
-        >
+        <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66dc928181bf97e670d394b9_Scuderia%20CoverHero.png" alt="Escudo Cover Hero" class="w-8 h-8 mr-2">
+        <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66dda6cb7fecafcd80f1568f_Logo%20White%20back.png" alt="Cover Hero" class="h-8">
       </div>
-      <!-- Menú de navegación -->
       <nav>
         <ul class="flex space-x-6 text-lg">
           <li><a href="#hero" class="hover:text-purple-800">Home</a></li>
@@ -97,11 +77,11 @@
     </div>
   </header>
 
-  <!-- Hero Section con mosaico de imágenes en movimiento -->
+  <!-- Hero Section con mosaico animado -->
   <section id="hero">
-    <!-- Contenedor amplio con imágenes una al lado de la otra -->
+    <!-- Mosaico de imágenes en movimiento -->
     <div class="moving-bg">
-      <!-- Ajusta las rutas de imagen a las reales de tu proyecto -->
+      <!-- Ajusta las URL de las imágenes a las reales -->
       <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66e3720e071d90dfc0b74024_Rachel%20Willey%201.webp" alt="Cover 1">
       <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/6772f33332d12a4ad96f0f7b_Dise%C3%B1o%20sin%20t%C3%ADtulo.jpg" alt="Cover 2">
       <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66e3737dfd0c92cf8e035d1e_Janet%20Hansen%204.webp" alt="Cover 3">
@@ -122,13 +102,10 @@
       <img src="cover18.jpg" alt="Cover 18">
       <img src="cover19.jpg" alt="Cover 19">
       <img src="cover20.jpg" alt="Cover 20">
-      <!-- Agrega más si quieres un mosaico más largo -->
     </div>
-
-    <!-- Capa oscura para legibilidad -->
+    <!-- Capa oscura -->
     <div class="hero-overlay"></div>
-
-    <!-- Contenido principal del hero -->
+    <!-- Contenido del Hero -->
     <div class="hero-content flex flex-col items-center justify-center text-center text-white">
       <div class="container mx-auto px-6">
         <h1 class="text-4xl md:text-6xl font-semibold mb-6">
@@ -259,11 +236,7 @@
       <div class="grid grid-cols-3 gap-8">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
-            <img 
-              src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66e3720e071d90dfc0b74024_Rachel%20Willey%201.webp"
-              alt="Boy Erased"
-              class="object-contain h-full w-full p-4"
-            >
+            <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66e3720e071d90dfc0b74024_Rachel%20Willey%201.webp" alt="Boy Erased" class="object-contain h-full w-full p-4">
           </div>
           <div class="p-4">
             <h3 class="text-xl font-semibold text-center">Boy Erased</h3>
@@ -271,11 +244,7 @@
         </div>
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
-            <img 
-              src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/6772f33332d12a4ad96f0f7b_Dise%C3%B1o%20sin%20t%C3%ADtulo.jpg"
-              alt="Park Life"
-              class="object-contain h-full w-full p-4"
-            >
+            <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/6772f33332d12a4ad96f0f7b_Dise%C3%B1o%20sin%20t%C3%ADtulo.jpg" alt="Park Life" class="object-contain h-full w-full p-4">
           </div>
           <div class="p-4">
             <h3 class="text-xl font-semibold text-center">Park Life</h3>
@@ -283,11 +252,7 @@
         </div>
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="relative aspect-[3/4] bg-gray-100 flex items-center justify-center">
-            <img 
-              src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66e3737dfd0c92cf8e035d1e_Janet%20Hansen%204.webp"
-              alt="Hiding in Plain Sight"
-              class="object-contain h-full w-full p-4"
-            >
+            <img src="https://cdn.prod.website-files.com/66dc450bfdefd9961a8ed898/66e3737dfd0c92cf8e035d1e_Janet%20Hansen%204.webp" alt="Hiding in Plain Sight" class="object-contain h-full w-full p-4">
           </div>
           <div class="p-4">
             <h3 class="text-xl font-semibold text-center">Hiding in Plain Sight</h3>
@@ -306,10 +271,54 @@
           <input type="hidden" name="form-name" value="cover-hero">
           <input type="hidden" name="_subject" value="Nuevo formulario de Cover Hero">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Campos del formulario -->
-            <!-- ... (igual que antes) -->
+            <!-- Aquí se incluyen los campos del formulario (Book Title, Subtitle, Genre, Audience, etc.) -->
+            <div>
+              <label for="title" class="block text-lg font-medium text-gray-700 mb-2">Book Title</label>
+              <input type="text" id="title" name="title" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="Enter your book title" required>
+            </div>
+            <div>
+              <label for="subtitle" class="block text-lg font-medium text-gray-700 mb-2">Subtitle (Optional)</label>
+              <input type="text" id="subtitle" name="subtitle" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="Enter a subtitle if you have one">
+            </div>
+            <div>
+              <label for="genre" class="block text-lg font-medium text-gray-700 mb-2">Genre</label>
+              <input type="text" id="genre" name="genre" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="e.g. Fantasy, Romance, Mystery" required>
+            </div>
+            <div>
+              <label for="audience" class="block text-lg font-medium text-gray-700 mb-2">Target Audience (Optional)</label>
+              <input type="text" id="audience" name="audience" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="e.g. Young adults, children, etc.">
+            </div>
+            <div>
+              <label for="keywords" class="block text-lg font-medium text-gray-700 mb-2">Keywords / Concepts</label>
+              <input type="text" id="keywords" name="keywords" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="e.g. medieval, epic, romance">
+            </div>
+            <div>
+              <label for="colors" class="block text-lg font-medium text-gray-700 mb-2">Color Preferences (Optional)</label>
+              <input type="text" id="colors" name="colors" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="e.g. dark, pastel, bright">
+            </div>
+            <div>
+              <label for="style" class="block text-lg font-medium text-gray-700 mb-2">Style Preferences (Optional)</label>
+              <select id="style" name="style" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800">
+                <option value="">No preference</option>
+                <option value="Minimalist">Minimalist</option>
+                <option value="Photographic">Photographic</option>
+                <option value="Illustrated">Illustrated</option>
+                <option value="Abstract">Abstract</option>
+              </select>
+            </div>
+            <div>
+              <label for="referenceLink" class="block text-lg font-medium text-gray-700 mb-2">Reference Link (Optional)</label>
+              <input type="url" id="referenceLink" name="referenceLink" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="Paste a link to images or references">
+            </div>
           </div>
-          <!-- Resto de campos (descripción, email, etc.) -->
+          <div>
+            <label for="description" class="block text-lg font-medium text-gray-700 mb-2">Describe your perfect book cover</label>
+            <textarea id="description" name="description" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="Describe the atmosphere, main elements, or any special requests..." required></textarea>
+          </div>
+          <div>
+            <label for="email" class="block text-lg font-medium text-gray-700 mb-2">Email</label>
+            <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-800" placeholder="you@example.com" required>
+          </div>
         </form>
         <div id="paypal-button-container" class="mt-6"></div>
         <div id="status-message" class="mt-4 text-center hidden">
@@ -335,9 +344,7 @@
       <h2 class="text-3xl font-bold mb-4">Contact</h2>
       <p class="text-lg text-gray-700">
         For inquiries, please email us at 
-        <a href="mailto:info@coverhero.com" class="text-purple-800 font-semibold">
-          info@coverhero.com
-        </a>
+        <a href="mailto:info@coverhero.com" class="text-purple-800 font-semibold">info@coverhero.com</a>
       </p>
     </div>
   </section>
@@ -349,9 +356,9 @@
     </div>
   </footer>
 
-  <!-- SDK de PayPal para Sandbox (reemplaza con tu client-id si es distinto) -->
+  <!-- SDK de PayPal para Sandbox -->
   <script src="https://www.paypal.com/sdk/js?client-id=AWYapal4yaCKCsd0v_7qC5mOVdlbPjLdqLojGJ9SDCNnHVbSmvrS65qjW2Zlqw44ZQcv_13b3-7DAPUQ&currency=USD"></script>
-
+  
   <!-- Tu script principal -->
   <script src="assets/js/script.js"></script>
 
